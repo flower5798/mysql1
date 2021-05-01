@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysql:
+    build: ./mysql/
+    volumes:
+      # 初期データをマウントするディレクトリ
+      - ./mysql/db/mysql_init:/docker-entrypoint-initdb.d
+      # 永続化するときにマウントするディレクトリ
+      - ./mysql/db/mysql_data:/var/lib/mysql
+      # mysql8用(デフォルト認証方法をmysql_native_passwordに設定)
+      - ./mysql/db/mysql_conf/:/etc/mysql/conf.d
+    image: original_mysql_world
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=user001
+      - MYSQL_PASSWORD=password

@@ -1,0 +1,11 @@
+
+-- user001はdocker-compose内で定義済み
+GRANT ALL ON *.* TO user001;
+
+CREATE DATABASE IF NOT EXISTS mydb1;
+USE mydb1;
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(64) NOT NULL
+);
